@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public class Customer {
 
-    @Nullable
+    @Nullable  //rika Springu ze parametr muse byt null
     private Integer id;
-    @NonNull
+    @NonNull  //rika Springu ze parametr muse byt null
     private String name;
     @NonNull
     private String surname;
@@ -28,10 +28,11 @@ public class Customer {
     @Nullable
     private int phone;
 
-    public Customer(){}
+    public Customer() {
+    }
 
     public Customer(@NonNull String name, @NonNull String surname, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode, @Nullable Integer age, int phone) {
-
+        // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni zakaznika
         this.name = name;
         this.surname = surname;
         this.email = email;

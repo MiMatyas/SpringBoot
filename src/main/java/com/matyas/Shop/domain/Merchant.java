@@ -6,9 +6,9 @@ import org.springframework.lang.NonNull;
 import java.util.Objects;
 
 public class Merchant {
-    @Nullable
+    @Nullable //rika Springu ze parametr muse byt null
     private Integer id;
-    @NonNull
+    @NonNull //rika Springu ze parametr muse byt null
     private String name;
     @NonNull
     private String email;
@@ -25,6 +25,7 @@ public class Merchant {
     }
 
     public Merchant(String name, String email, String city, String street, int houseNumber, int zipcode) {
+        // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni prodejce
         this.name = name;
         this.email = email;
         this.city = city;

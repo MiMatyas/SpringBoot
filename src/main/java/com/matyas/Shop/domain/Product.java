@@ -8,9 +8,9 @@ import java.time.Instant;
 import java.util.Objects;
 
 public class Product {
-    @Nullable
+    @Nullable //rika Springu ze parametr muse byt null
     private Integer id;
-    @NonNull
+    @NonNull //rika Springu ze parametr muse byt null
     private int merchantId;
     @NonNull
     private String name;
@@ -27,6 +27,7 @@ public class Product {
     }
 
     public Product(int merchantId, @NonNull String name, @NonNull String description, double price, int avilable) {
+        // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni produktu
         this.merchantId = merchantId;
         this.name = name;
         this.description = description;

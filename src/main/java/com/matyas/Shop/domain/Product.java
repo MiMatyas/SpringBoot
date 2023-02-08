@@ -21,19 +21,19 @@ public class Product {
     @NonNull
     private Timestamp createdAt;
     @NonNull
-    private int avilable;
+    private int available;
 
     public Product() {
     }
 
-    public Product(int merchantId, @NonNull String name, @NonNull String description, double price, int avilable) {
+    public Product(int merchantId, @NonNull String name, @NonNull String description, double price, int available) {
         // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni produktu
         this.merchantId = merchantId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.createdAt = Timestamp.from(Instant.now());
-        this.avilable = avilable;
+        this.available = available;
     }
 
     @Nullable
@@ -88,12 +88,12 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-    public int getAvilable() {
-        return avilable;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setAvilable(int avilable) {
-        this.avilable = avilable;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     @Override
@@ -101,11 +101,11 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return merchantId == product.merchantId && Double.compare(product.price, price) == 0 && avilable == product.avilable && Objects.equals(id, product.id) && name.equals(product.name) && description.equals(product.description) && createdAt.equals(product.createdAt);
+        return merchantId == product.merchantId && Double.compare(product.price, price) == 0 && available == product.available && Objects.equals(id, product.id) && name.equals(product.name) && description.equals(product.description) && createdAt.equals(product.createdAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, merchantId, name, description, price, createdAt, avilable);
+        return Objects.hash(id, merchantId, name, description, price, createdAt, available);
     }
 }

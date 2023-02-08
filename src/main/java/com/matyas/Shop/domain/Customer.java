@@ -7,9 +7,9 @@ import java.util.Objects;
 
 public class Customer {
 
-    @Nullable  //rika Springu ze parametr muse byt null
+    @Nullable  //rika Springu ze parametr muze byt null
     private Integer id;
-    @NonNull  //rika Springu ze parametr muse byt null
+    @NonNull  //rika Springu ze parametr nemuze byt null
     private String name;
     @NonNull
     private String surname;
@@ -26,7 +26,7 @@ public class Customer {
     @Nullable
     private Integer age;
     @Nullable
-    private int phone;
+    private Integer phone;
 
     public Customer() {
     }

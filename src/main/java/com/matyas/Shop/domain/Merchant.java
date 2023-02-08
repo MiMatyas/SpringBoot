@@ -6,9 +6,9 @@ import org.springframework.lang.NonNull;
 import java.util.Objects;
 
 public class Merchant {
-    @Nullable //rika Springu ze parametr muse byt null
+    @Nullable //rika Springu ze parametr muze byt null
     private Integer id;
-    @NonNull //rika Springu ze parametr muse byt null
+    @NonNull //rika Springu ze parametr nemuze byt null
     private String name;
     @NonNull
     private String email;

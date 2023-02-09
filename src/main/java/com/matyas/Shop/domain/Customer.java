@@ -145,4 +145,20 @@ public class Customer {
     public void setPhone(int phone) {
         this.phone = phone;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", zipcode=" + zipcode +
+                ", age=" + age +
+                ", phone=" + phone +
+                '}';
+    }
 }

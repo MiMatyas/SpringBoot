@@ -19,7 +19,7 @@ public class CustomerRowMapper implements RowMapper<Customer> {
         customer.setHouseNumber(rs.getInt("house_number"));
         customer.setZipcode(rs.getInt("zipcode"));
         customer.setAge(rs.getObject("age") == null? null : rs.getInt("age"));
-        customer.setPhone(rs.getObject("phone") == null? null : rs.getInt("phone"));
+        customer.setPhone(rs.getObject("phone_number") == null? null : rs.getInt("phone_number"));
         return customer;
     }
 }

@@ -21,7 +21,7 @@ public class CustomerRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
     public Customer get(int id) {
-        final String sql = "SELECT * FROM shop customer.id = " + id;
+        final String sql = "SELECT * FROM customer WHERE customer.id = " + id;
         try {
             return jdbcTemplate.queryForObject(sql, customerRowMapper);
         }catch(EmptyResultDataAccessException e){

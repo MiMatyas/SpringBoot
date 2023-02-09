@@ -37,6 +37,6 @@ public class MerchanServiceImpl implements MerchantService {
 
     @Override
     public void update(int id, UpdateMerchantRequest updateMerchantRequest) {
-        
+
     }
 }

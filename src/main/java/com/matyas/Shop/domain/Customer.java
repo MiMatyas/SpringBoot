@@ -31,7 +31,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(@NonNull String name, @NonNull String surname, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode, @Nullable Integer age, int phone) {
+    public Customer(@NonNull String name, @NonNull String surname, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode, @Nullable Integer age, Integer phone) {
         // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni zakaznika
         this.name = name;
         this.surname = surname;
@@ -138,7 +138,7 @@ public class Customer {
         this.age = age;
     }
 
-    public int getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 

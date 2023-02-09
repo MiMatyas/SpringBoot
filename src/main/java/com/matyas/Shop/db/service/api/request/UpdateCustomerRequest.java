@@ -23,9 +23,9 @@ public class UpdateCustomerRequest {
     @Nullable
     private Integer age;
     @Nullable
-    private int phone;
+    private Integer phone;
 
-    public UpdateCustomerRequest(@NonNull String name, @NonNull String surname, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode, @Nullable Integer age, int phone) {
+    public UpdateCustomerRequest(@NonNull String name, @NonNull String surname, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode, @Nullable Integer age, Integer phone) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -77,7 +77,7 @@ public class UpdateCustomerRequest {
         return age;
     }
 
-    public int getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 

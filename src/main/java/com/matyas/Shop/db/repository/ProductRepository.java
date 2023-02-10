@@ -25,7 +25,7 @@ public class ProductRepository {
     }
 
     public Product getProduct(int id) {
-        final String sql = "SELECT - from product WHERE product.id = " + id;
+        final String sql = "SELECT * FROM product WHERE product.id = " + id;
         try {
             return jdbcTemplate.queryForObject(sql, productRowMapper);
         } catch (EmptyResultDataAccessException e) {
@@ -63,12 +63,12 @@ public class ProductRepository {
     }
 
     public void update(int id, UpdateProductRequest updateProductRequest) {
-        final String sql = "UPDATE product SET name = ?, description = ?, price = ?, available = ? WHERE product.id = id";
+        final String sql = "UPDATE product SET name = ?, description = ?, price = ?, available = ? WHERE product.id = ?";
         jdbcTemplate.update(sql, updateProductRequest.getName(),updateProductRequest.getDescription(),updateProductRequest.getPrice(),updateProductRequest.getAvailable(), id);
 
     }
     public void delete(int id){
-        final String sql = "DELETE FROM customer WHERE id = id";
+        final String sql = "DELETE FROM product WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
 }

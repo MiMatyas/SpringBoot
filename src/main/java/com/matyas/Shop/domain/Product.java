@@ -101,11 +101,30 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return merchantId == product.merchantId && Double.compare(product.price, price) == 0 && available == product.available && Objects.equals(id, product.id) && name.equals(product.name) && description.equals(product.description) && createdAt.equals(product.createdAt);
+        return merchantId == product.merchantId &&
+                Double.compare(product.price, price) == 0
+                && available == product.available &&
+                Objects.equals(id, product.id) &&
+                name.equals(product.name) &&
+                description.equals(product.description) &&
+                createdAt.getTime() == product.createdAt.getTime(); // metoda byla upravena aby si pro stejne objekty pri porovnani byli rovny
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, merchantId, name, description, price, createdAt, available);
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", merchantId=" + merchantId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", createdAt=" + createdAt +
+                ", available=" + available +
+                '}';
     }
 }

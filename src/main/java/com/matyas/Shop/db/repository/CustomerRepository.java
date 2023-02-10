@@ -34,7 +34,7 @@ public class CustomerRepository {
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);// keyholder zachytava id
+                PreparedStatement preparedStatement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);// keyholder zachytava id
                 preparedStatement.setString(1,customer.getName());
                 preparedStatement.setString(2,customer.getSurname());
                 preparedStatement.setString(3,customer.getEmail());

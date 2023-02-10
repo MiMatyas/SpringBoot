@@ -2,16 +2,16 @@ package com.matyas.Shop.db.service.impl;
 
 import com.matyas.Shop.db.repository.MerchantRepository;
 import com.matyas.Shop.db.service.api.MerchantService;
-import com.matyas.Shop.db.service.api.request.UpdateMerchantRequest;
 import com.matyas.Shop.domain.Merchant;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-public class MerchanServiceImpl implements MerchantService {
+@Service
+public class MerchantServiceImpl implements MerchantService {
 
     private final MerchantRepository merchantRepository;
 
-    public MerchanServiceImpl(MerchantRepository merchantRepository){
+    public MerchantServiceImpl(MerchantRepository merchantRepository){
         this.merchantRepository = merchantRepository;
     }
 
@@ -30,13 +30,7 @@ public class MerchanServiceImpl implements MerchantService {
         return merchantRepository.add(merchant);
     }
 
-    @Override
-    public void delete(int id) {
-        merchantRepository.delete(id);
-    }
 
-    @Override
-    public void update(int id, UpdateMerchantRequest updateMerchantRequest) {
 
-    }
+
 }

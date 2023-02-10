@@ -12,14 +12,14 @@ import org.springframework.stereotype.Component;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Types;
 import java.util.List;
 
 @Component
 // vytvori MerchantRepository ve Spring kontextu, diky tomu muzeme MerchantRepository pouzit v inject dependency
 public class MerchantRepository {
-    JdbcTemplate jdbcTemplate;
-    MerchanRowMapper merchanRowMapper = new MerchanRowMapper();
+    private final JdbcTemplate jdbcTemplate;
+    private final MerchanRowMapper merchanRowMapper = new MerchanRowMapper();
     public MerchantRepository(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -37,7 +37,7 @@ public class MerchantRepository {
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement preparedStatement = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1,merchant.getName());
                 preparedStatement.setString(2,merchant.getEmail());
                 preparedStatement.setString(3,merchant.getCity());
@@ -47,7 +47,7 @@ public class MerchantRepository {
                 return preparedStatement;
             }
         }, keyHolder);
-        if (keyHolder.getKey() != null){
+        if (keyHolder != null){
             return keyHolder.getKey().intValue();
         }else{
             return null;
@@ -58,10 +58,7 @@ public class MerchantRepository {
         final String sql = "SELECT * FROM merchant";
         return jdbcTemplate.query(sql, merchanRowMapper);
     }
-    public void delete (int id){
-        final String sql = "DELETE FROM customer WHERE customer.id = id";
-        jdbcTemplate.update(sql, id);
-    }
+
 }
 
 

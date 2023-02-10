@@ -1,6 +1,6 @@
 package com.matyas.Shop.domain;
 
-import jakarta.annotation.Nullable;
+import org.springframework.lang.Nullable;
 import org.springframework.lang.NonNull;
 
 import java.util.Objects;
@@ -17,14 +17,14 @@ public class Merchant {
     @NonNull
     private String street;
     @NonNull
-    private int houseNumber;
+    private Integer houseNumber;
     @NonNull
-    private int zipcode;
+    private Integer zipcode;
 
     public Merchant() {
     }
 
-    public Merchant(String name, String email, String city, String street, int houseNumber, int zipcode) {
+    public Merchant(@NonNull String name, @NonNull String email, @NonNull String city, @NonNull String street, @NonNull Integer houseNumber, @NonNull Integer zipcode) {
         // id se bude tvorit v databazi, ne vzdy ho budeme mit k dispozici pri tvoreni prodejce
         this.name = name;
         this.email = email;
@@ -34,59 +34,66 @@ public class Merchant {
         this.zipcode = zipcode;
     }
 
+    @Nullable
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(@Nullable Integer id) {
         this.id = id;
     }
 
+    @NonNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
+    @NonNull
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(@NonNull String email) {
         this.email = email;
     }
 
+    @NonNull
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(@NonNull String city) {
         this.city = city;
     }
 
+    @NonNull
     public String getStreet() {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(@NonNull String street) {
         this.street = street;
     }
 
-    public int getHouseNumber() {
+    @NonNull
+    public Integer getHouseNumber() {
         return houseNumber;
     }
 
-    public void setHouseNumber(int houseNumber) {
+    public void setHouseNumber(@NonNull Integer houseNumber) {
         this.houseNumber = houseNumber;
     }
 
-    public int getZipcode() {
+    @NonNull
+    public Integer getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(@NonNull Integer zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -95,7 +102,7 @@ public class Merchant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Merchant merchant = (Merchant) o;
-        return houseNumber == merchant.houseNumber && zipcode == merchant.zipcode && Objects.equals(id, merchant.id) && Objects.equals(name, merchant.name) && Objects.equals(email, merchant.email) && Objects.equals(city, merchant.city) && Objects.equals(street, merchant.street);
+        return Objects.equals(id, merchant.id) && name.equals(merchant.name) && email.equals(merchant.email) && city.equals(merchant.city) && street.equals(merchant.street) && houseNumber.equals(merchant.houseNumber) && zipcode.equals(merchant.zipcode);
     }
 
     @Override

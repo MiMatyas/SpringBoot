@@ -10,10 +10,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Instant;
 import java.util.List;
 @Component
 public class ProductRepository {
@@ -44,7 +42,11 @@ public class ProductRepository {
                 preparedStatement.setString(2, product.getName());
                 preparedStatement.setString(3, product.getDescription());
                 preparedStatement.setDouble(4, product.getPrice());
-                preparedStatement.setTimestamp(5, product.getCreatedAt());
+                if (product.getCreatedAt() ==null) {
+                     product.setCreatedAt(Timestamp.from(Instant.now()));
+                }
+                    preparedStatement.setTimestamp(5, product.getCreatedAt());
+
                 preparedStatement.setInt(6, product.getAvailable());
                 return preparedStatement;
             }

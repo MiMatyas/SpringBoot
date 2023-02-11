@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.*;
 import java.time.Instant;
-
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class DBInsertTests {
@@ -51,8 +52,16 @@ public class DBInsertTests {
                 preparedStatement.setString(5, customer.getStreet());
                 preparedStatement.setInt(6, customer.getHouseNumber());
                 preparedStatement.setInt(7, customer.getZipcode());
-                preparedStatement.setInt(8, customer.getAge());
-                preparedStatement.setInt(9, customer.getPhone());
+                if (customer.getAge() != null){
+                    preparedStatement.setInt(8,customer.getAge());
+                }else {
+                    preparedStatement.setNull(8, Types.INTEGER);
+                }
+                if (customer.getPhone() !=null){
+                    preparedStatement.setInt(9,customer.getPhone());
+                }else {
+                    preparedStatement.setNull(9,Types.INTEGER);
+                }
                 return preparedStatement;
             }
         });

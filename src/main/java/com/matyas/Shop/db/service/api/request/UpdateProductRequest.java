@@ -14,7 +14,7 @@ public class UpdateProductRequest {
     @NonNull
     private int available;
 
-    public UpdateProductRequest(@NonNull String name, @NonNull String description, double price, int available) {
+    public UpdateProductRequest(@NonNull String name, @NonNull String description,@NonNull double price,@NonNull int available) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -30,11 +30,11 @@ public class UpdateProductRequest {
     public String getDescription() {
         return description;
     }
-
+    @NonNull
     public double getPrice() {
         return price;
     }
-
+    @NonNull
     public int getAvailable() {
         return available;
     }

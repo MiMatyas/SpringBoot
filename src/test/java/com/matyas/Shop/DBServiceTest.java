@@ -42,7 +42,7 @@ public class DBServiceTest {
     }
     @Test
     public void customer() {
-        Customer customer = new Customer("Adam", "Novak", "adam.novak@seznam.cz", "Praha", "Brněnská", 5, 61101, 25, 732358465);
+        Customer customer = new Customer("Adam", "Novak", "adam.novak@seznam.cz", "Praha", "Brněnská", 5, 61101, 25, 777777777);
         Integer id = customerService.add(customer);
         assert id != null;
         customer.setId(id);

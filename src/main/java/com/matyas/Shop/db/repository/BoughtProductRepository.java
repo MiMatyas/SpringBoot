@@ -18,7 +18,7 @@ public class BoughtProductRepository {
     }
     public void add(BoughtProduct boughtProduct){
         final String sql = "INSERT INTO bought_product (product_id, customer_id, quantity, bought_at) VALUES (?,?,?,?)";
-        jdbcTemplate.update(sql, boughtProduct.getProductId(),boughtProduct.getCustomerId(),boughtProduct.getQuantity(),boughtProduct.getBoughtAd());
+        jdbcTemplate.update(sql, boughtProduct.getProductId(),boughtProduct.getCustomerId(),boughtProduct.getQuantity(),boughtProduct.getBoughtAt());
     }
     public List<BoughtProduct> getAllByCustomerId(int customerId){
         final String sql = "SELECT * FROM bought_product WHERE customer_id = " + customerId;

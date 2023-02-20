@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bough-product")
+@RequestMapping("/bought-product")
 public class BoughtProductController {
     private final BoughtProductService boughtProductService;
 
@@ -22,6 +22,7 @@ public class BoughtProductController {
     @GetMapping("/{customerId}")
     public ResponseEntity getByCustomerId(@PathVariable("customerId") int customerId){
         List<BoughtProduct> boughtProductList = boughtProductService.getAllByCustomerId(customerId);
+
         return new ResponseEntity<>(boughtProductList, HttpStatus.OK);
     }
 }

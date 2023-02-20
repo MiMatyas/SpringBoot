@@ -67,12 +67,17 @@ public class ProductRepository {
     public void update(int id, UpdateProductRequest updateProductRequest) {
         final String sql = "UPDATE product SET name = ?, description = ?, price = ?, available = ? WHERE product.id = ?";
         jdbcTemplate.update(sql, updateProductRequest.getName(),updateProductRequest.getDescription(),updateProductRequest.getPrice(),updateProductRequest.getAvailable(), id);
-
     }
     public void delete(int id){
         final String sql = "DELETE FROM product WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
+    public void updateAvailable(int id, int newAvailable){
+        final String sql = "UPDATE product SET available = ? WHERE id = ?";
+        jdbcTemplate.update(sql, newAvailable, id);
+    }
+
 }
 
 

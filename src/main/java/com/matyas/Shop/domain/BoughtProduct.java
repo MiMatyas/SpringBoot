@@ -8,29 +8,28 @@ public class BoughtProduct {
     private int productId;
     private int customerId;
     private int quantity;
-    private Timestamp boughtAd;
-
+    private Timestamp boughtAt;
+    public BoughtProduct() {}
     public BoughtProduct(int productId, int customerId, int quantity) {
         this.productId = productId;
         this.customerId = customerId;
         this.quantity = quantity;
-        this.boughtAd = Timestamp.from(Instant.now());
+        this.boughtAt = Timestamp.from(Instant.now());
     }
 
-    public BoughtProduct() {
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BoughtProduct that = (BoughtProduct) o;
-        return productId == that.productId && customerId == that.customerId && quantity == that.quantity && Objects.equals(boughtAd, that.boughtAd);
+        return productId == that.productId && customerId == that.customerId && quantity == that.quantity && Objects.equals(boughtAt, that.boughtAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, customerId, quantity, boughtAd);
+        return Objects.hash(productId, customerId, quantity, boughtAt);
     }
 
     public int getProductId() {
@@ -57,11 +56,11 @@ public class BoughtProduct {
         this.quantity = quantity;
     }
 
-    public Timestamp getBoughtAd() {
-        return boughtAd;
+    public Timestamp getBoughtAt() {
+        return boughtAt;
     }
 
-    public void setBoughtAd(Timestamp boughtAd) {
-        this.boughtAd = boughtAd;
+    public void setBoughtAt(Timestamp boughtAt) {
+        this.boughtAt = boughtAt;
     }
 }

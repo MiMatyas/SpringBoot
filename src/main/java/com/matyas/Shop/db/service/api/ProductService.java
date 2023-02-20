@@ -15,4 +15,6 @@ public interface ProductService {
     void detele(int id); // vymaze product s danym id;
 
     void update(int id, UpdateProductRequest updateProductRequest); // updateProductRequest z hlavicky prepise product v databazi se zvolenym id
+
+    void updateAvailableInternal(int id, int newAvailable); // po uspesnem nakupu upravi mnozstvi dostupnych produktu
 }

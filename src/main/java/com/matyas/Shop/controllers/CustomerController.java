@@ -1,7 +1,9 @@
 package com.matyas.Shop.controllers;
 
+import com.matyas.Shop.db.service.api.CustomerAccountService;
 import com.matyas.Shop.db.service.api.CustomerService;
 import com.matyas.Shop.domain.Customer;
+import com.matyas.Shop.domain.CustomerAccount;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService customerService;
+    private final CustomerAccountService customerAccountService;
 
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, CustomerAccountService customerAccountService) {
         this.customerService = customerService;
+        this.customerAccountService = customerAccountService;
     }
 
 
@@ -43,5 +47,10 @@ public class CustomerController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    @PostMapping("/account")
+    public ResponseEntity addAccount (@RequestBody CustomerAccount customerAccount){
+        customerAccountService.addCustomerAccount(customerAccount);
+        return new ResponseEntity<>(null,HttpStatus.CREATED);
     }
 }

@@ -3,6 +3,7 @@ package com.matyas.Shop;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matyas.Shop.domain.Customer;
+import com.matyas.Shop.domain.Merchant;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +35,6 @@ public class RestControllerTests {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-
     public void customer() throws Exception {
         Customer customer = new Customer("Adam", "Novak", "adam.novak@seznam.cz", "Praha", "Dolni", 5, 61101, 25, 777777777);
         // add customer
@@ -59,8 +59,32 @@ public class RestControllerTests {
         List<Customer> customers = objectMapper.readValue(listJson, new TypeReference<List<Customer>>(){});
         assert customers.size() == 1;
         Assertions.assertEquals(customer.toString(),customers.get(0).toString());
-
     }
+        @Test
+        public void merchant() throws Exception{
+        // add merchant
+        Merchant merchant = new Merchant("Adam","novak@seznam.cz","Brno","horni",47,63901);
+        String id = mockMvc.perform(post("/merchant")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(merchant)))
+                .andExpect(status().isCreated())
+                .andReturn().getResponse().getContentAsString();
+        merchant.setId(objectMapper.readValue(id, Integer.class));
 
-
+        // get merchant
+        String merchantJson = mockMvc.perform(get("/merchant/"+merchant.getId())
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        Merchant returnedMerchant = objectMapper.readValue(merchantJson, Merchant.class);
+        Assertions.assertEquals(merchant,returnedMerchant);
+        // get all merchants
+        String listMerchants = mockMvc.perform(get("/merchant")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        List<Merchant> merchants = objectMapper.readValue(listMerchants, new TypeReference<List<Merchant>>() {});
+        assert merchants.size() == 1;
+        Assertions.assertEquals(merchant,merchants.get(0));
+        }
 }
